@@ -13,7 +13,7 @@ public class SMPPHelperTest {
     public void testWriteCString() {
         ByteBuffer testBuffer = ByteBuffer.allocate(testBytes.length);
 
-        SMPPHelper.writeCString(testBuffer, "hello world");
+        SMPPHelper.writeCString(testBuffer, "hello world", 15);
 
         assertArrayEquals(testBytes, testBuffer.array());
     }
@@ -22,7 +22,7 @@ public class SMPPHelperTest {
     public void testReadCString() {
         ByteBuffer testBuffer = ByteBuffer.wrap(testBytes);
 
-        String result = SMPPHelper.readCString(testBuffer);
+        String result = SMPPHelper.readCString(testBuffer, 15);
 
         assertEquals("hello world", result);
     }

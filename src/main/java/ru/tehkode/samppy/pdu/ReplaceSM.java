@@ -1,10 +1,8 @@
 package ru.tehkode.samppy.pdu;
 
-import ru.tehkode.samppy.pdu.SubmitSM;
 import ru.tehkode.samppy.proto.ResponsePDU;
 import ru.tehkode.samppy.proto.MessagePDU;
 import ru.tehkode.samppy.proto.AbstractPDU;
-import ru.tehkode.samppy.proto.DataCoding;
 import ru.tehkode.samppy.proto.NumericPlanIndicator;
 import ru.tehkode.samppy.proto.RegisteredDelivery;
 import ru.tehkode.samppy.proto.SMPPCOctet;
@@ -12,7 +10,6 @@ import ru.tehkode.samppy.proto.SMPPCommand;
 import ru.tehkode.samppy.proto.SMPPComposite;
 import ru.tehkode.samppy.proto.SMPPDate;
 import ru.tehkode.samppy.proto.SMPPInteger;
-import ru.tehkode.samppy.proto.SMPPOctet;
 import ru.tehkode.samppy.proto.ShortMessage;
 import ru.tehkode.samppy.proto.TypeOfNumber;
 

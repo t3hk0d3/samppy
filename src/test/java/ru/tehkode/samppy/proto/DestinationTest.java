@@ -35,7 +35,7 @@ public class DestinationTest {
         
         
         
-        Destination.List list = adapter.deserialize(buffer);
+        Destination.List<Destination> list = adapter.deserialize(buffer);
         
         assertEquals(3, list.size());
         

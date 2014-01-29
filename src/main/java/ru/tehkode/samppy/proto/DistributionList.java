@@ -9,7 +9,7 @@ public class DistributionList implements Destination {
     }
 
     public DistributionList(ByteBuffer buffer) {
-        this(SMPPHelper.readCString(buffer));
+        this(SMPPHelper.readCString(buffer, 21));
     }
 
     public DistributionList(String listName) {
@@ -31,7 +31,7 @@ public class DistributionList implements Destination {
     }
 
     public void write(ByteBuffer buffer) {
-        SMPPHelper.writeCString(buffer, this.listName);
+        SMPPHelper.writeCString(buffer, this.listName, 21);
     }
     
 }

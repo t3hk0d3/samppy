@@ -20,7 +20,11 @@ public interface Destination {
         }
     }
 
-    public static class Adapter implements SMPPCompositeField<List<Destination>> {
+    public static class Adapter implements SMPPFieldHandler<List<Destination>> {
+
+        public Class<List<Destination>> fieldClass() {
+            return (Class<List<Destination>>)(Class<?>)List.class;
+        }
 
         public List<Destination> deserialize(ByteBuffer buffer) {
             int amount = buffer.get();

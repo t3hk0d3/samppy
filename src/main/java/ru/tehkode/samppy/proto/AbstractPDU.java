@@ -31,7 +31,7 @@ public abstract class AbstractPDU<T extends AbstractPDU> implements PDU<T> {
         return (T)this;
     }
 
-    public Set<OptionalParameter> optionalParamenters() {
+    public Set<OptionalParameter> optionalParameters() {
         return this.parameters;
     }
 

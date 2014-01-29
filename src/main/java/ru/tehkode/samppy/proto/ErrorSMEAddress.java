@@ -25,7 +25,7 @@ public class ErrorSMEAddress extends SMEAddress {
     @Override
     public Type addressType() { // defensive programming ftw
         throw new IllegalStateException("Do not use ErrorSMEAddress with for SubmitMultiSM!");
-    }   
+    }
 
     public int errorCode() {
         return errorCode;
@@ -43,7 +43,11 @@ public class ErrorSMEAddress extends SMEAddress {
         buffer.putInt(errorCode);
     }
 
-    public static class Adapter implements SMPPCompositeField<Destination.List<ErrorSMEAddress>> {
+    public static class Adapter implements SMPPFieldHandler<Destination.List<ErrorSMEAddress>> {
+
+        public Class<List<ErrorSMEAddress>> fieldClass() {
+            return (Class<List<ErrorSMEAddress>>) (Class<?>) List.class;
+        }
 
         public List<ErrorSMEAddress> deserialize(ByteBuffer buffer) {
             int amount = buffer.get();
@@ -64,7 +68,7 @@ public class ErrorSMEAddress extends SMEAddress {
 
             buffer.put((byte) object.size());
             for (ErrorSMEAddress destination : object) {
-                destination.write(buffer);           
+                destination.write(buffer);
             }
         }
     }

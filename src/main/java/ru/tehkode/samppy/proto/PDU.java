@@ -12,7 +12,7 @@ public interface PDU<T extends PDU> {
     long sequenceNumber();    
     T sequenceNumber(long sequenceNumber);
     
-    Set<OptionalParameter> optionalParamenters();
+    Set<OptionalParameter> optionalParameters();
     T addOptionalParameter(OptionalParameter... parameters);
     T removeOptionalParameter(OptionalParameter... parameters);  
     

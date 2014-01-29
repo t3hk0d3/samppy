@@ -1,8 +1,17 @@
 package ru.tehkode.samppy.proto;
 
 public class BasicOptionalParameter implements OptionalParameter<BasicOptionalParameter> {
+
     private short tag;
     private byte[] value;
+
+    public BasicOptionalParameter() {
+    }
+
+    public BasicOptionalParameter(short tag, byte[] value) {
+        this.tag = tag;
+        this.value = value;
+    }
 
     public short tag() {
         return this.tag;
@@ -14,7 +23,7 @@ public class BasicOptionalParameter implements OptionalParameter<BasicOptionalPa
     }
 
     public short length() {
-        return (short)this.value.length;
+        return (short) this.value.length;
     }
 
     public byte[] value() {
@@ -23,7 +32,7 @@ public class BasicOptionalParameter implements OptionalParameter<BasicOptionalPa
 
     public BasicOptionalParameter value(byte[] value) {
         this.value = value;
-        
+
         return this;
     }
 }

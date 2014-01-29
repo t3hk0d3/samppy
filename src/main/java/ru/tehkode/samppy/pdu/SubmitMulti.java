@@ -15,7 +15,6 @@ import ru.tehkode.samppy.proto.SMPPCommand;
 import ru.tehkode.samppy.proto.SMPPComposite;
 import ru.tehkode.samppy.proto.SMPPDate;
 import ru.tehkode.samppy.proto.SMPPInteger;
-import ru.tehkode.samppy.proto.SMPPOctet;
 import ru.tehkode.samppy.proto.ShortMessage;
 import ru.tehkode.samppy.proto.TypeOfNumber;
 

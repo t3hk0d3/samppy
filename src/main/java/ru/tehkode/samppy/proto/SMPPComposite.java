@@ -11,5 +11,5 @@ public @interface SMPPComposite {
 
     int order();
 
-    Class<? extends SMPPCompositeField> adapter();
+    Class<? extends SMPPFieldHandler> adapter();
 }

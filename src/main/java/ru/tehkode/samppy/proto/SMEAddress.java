@@ -19,7 +19,7 @@ public class SMEAddress implements Destination {
     public SMEAddress(ByteBuffer buffer) {
         this.addressTON = TypeOfNumber.lookup(buffer.get());
         this.addressNPI = NumericPlanIndicator.lookup(buffer.get());
-        this.address = SMPPHelper.readCString(buffer);
+        this.address = SMPPHelper.readCString(buffer, 21);
     }
 
     public SMEAddress(String address) {
@@ -61,7 +61,7 @@ public class SMEAddress implements Destination {
     public void write(ByteBuffer buffer) {
         buffer.put(addressTON.value());
         buffer.put(addressNPI.value());
-        SMPPHelper.writeCString(buffer, address);
+        SMPPHelper.writeCString(buffer, address, 21);
     }
     
 }
