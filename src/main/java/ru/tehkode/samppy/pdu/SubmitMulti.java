@@ -16,6 +16,7 @@ import ru.tehkode.samppy.proto.SMPPComposite;
 import ru.tehkode.samppy.proto.SMPPDate;
 import ru.tehkode.samppy.proto.SMPPInteger;
 import ru.tehkode.samppy.proto.SMPPOctet;
+import ru.tehkode.samppy.proto.ShortMessage;
 import ru.tehkode.samppy.proto.TypeOfNumber;
 
 public class SubmitMulti extends AbstractPDU<SubmitMulti> implements MessagePDU<SubmitMulti> {
@@ -48,10 +49,8 @@ public class SubmitMulti extends AbstractPDU<SubmitMulti> implements MessagePDU<
     private DataCoding dataCoding;
     @SMPPInteger(order = 14)
     private short smDefaultMsgId;
-    @SMPPInteger(order = 15)
-    private short smLength;
-    @SMPPOctet(order = 16, length = 255, lengthField = "smLength")
-    private byte[] shortMessage;
+    @SMPPComposite(order = 15, adapter=ShortMessage.Adapter.class)
+    private ShortMessage shortMessage;
 
     public long commandId() {
         return SMPPCommand.SUBMIT_MULTI.commandId();
@@ -219,21 +218,11 @@ public class SubmitMulti extends AbstractPDU<SubmitMulti> implements MessagePDU<
         return this;
     }
 
-    public short smLength() {
-        return smLength;
-    }
-
-    public SubmitMulti smLength(short smLength) {
-        this.smLength = smLength;
-
-        return this;
-    }
-
-    public byte[] shortMessage() {
+    public ShortMessage shortMessage() {
         return shortMessage;
     }
 
-    public SubmitMulti shortMessage(byte[] shortMessage) {
+    public SubmitMulti shortMessage(ShortMessage shortMessage) {
         this.shortMessage = shortMessage;
 
         return this;

@@ -9,9 +9,11 @@ import ru.tehkode.samppy.proto.NumericPlanIndicator;
 import ru.tehkode.samppy.proto.RegisteredDelivery;
 import ru.tehkode.samppy.proto.SMPPCOctet;
 import ru.tehkode.samppy.proto.SMPPCommand;
+import ru.tehkode.samppy.proto.SMPPComposite;
 import ru.tehkode.samppy.proto.SMPPDate;
 import ru.tehkode.samppy.proto.SMPPInteger;
 import ru.tehkode.samppy.proto.SMPPOctet;
+import ru.tehkode.samppy.proto.ShortMessage;
 import ru.tehkode.samppy.proto.TypeOfNumber;
 
 public class DeliverSM extends AbstractPDU<DeliverSM> implements MessagePDU<DeliverSM> {
@@ -48,10 +50,8 @@ public class DeliverSM extends AbstractPDU<DeliverSM> implements MessagePDU<Deli
     private DataCoding dataCoding;
     @SMPPInteger(order = 16)
     private short smDefaultMsgId;
-    @SMPPInteger(order = 17)
-    private short smLength;    
-    @SMPPOctet(order = 18, length = 255, lengthField = "smLength")
-    private byte[] shortMessage;
+    @SMPPComposite(order = 17, adapter=ShortMessage.Adapter.class)
+    private ShortMessage shortMessage;
     
      public String serviceType() {
         return serviceType;
@@ -213,21 +213,11 @@ public class DeliverSM extends AbstractPDU<DeliverSM> implements MessagePDU<Deli
         return this;
     }
 
-    public short smLength() {
-        return smLength;
-    }
-
-    public DeliverSM smLength(short smLength) {
-        this.smLength = smLength;
-        
-        return this;
-    }
-
-    public byte[] shortMessage() {
+    public ShortMessage shortMessage() {
         return shortMessage;
     }
 
-    public DeliverSM shortMessage(byte[] shortMessage) {
+    public DeliverSM shortMessage(ShortMessage shortMessage) {
         this.shortMessage = shortMessage;
         
         return this;
