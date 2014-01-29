@@ -1,13 +1,19 @@
 package ru.tehkode.samppy.proto;
 
+import java.util.Set;
+
 public interface PDU<T extends PDU> {
     
-    public long commandId();    
+    long commandId();    
     
-    public long commandStatus();    
-    public T commandStatus(long commandStatus);
+    long commandStatus();    
+    T commandStatus(long commandStatus);
     
-    public long sequenceNumber();    
-    public T sequenceNumber(long sequenceNumber);
+    long sequenceNumber();    
+    T sequenceNumber(long sequenceNumber);
+    
+    Set<OptionalParameter> optionalParamenters();
+    T addOptionalParameter(OptionalParameter... parameters);
+    T removeOptionalParameter(OptionalParameter... parameters);  
     
 }
